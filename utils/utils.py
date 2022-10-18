@@ -37,7 +37,7 @@ def show_predictions_on_dataset(logits: torch.FloatTensor, dataset: Union[str, L
     softmaxes = F.softmax(logits, dim=-1)
     top_val, top_idx = torch.sort(softmaxes, dim=-1, descending=True)
 
-    k = 5
+    k = 15
     logits_score = logits.gather(1, top_idx[:, :k]).tolist()
     softmax_score = softmaxes.gather(1, top_idx[:, :k]).tolist()
     class_labels = [[dataset_classes[idx] for idx in i_row] for i_row in top_idx[:, :k]]
