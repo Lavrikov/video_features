@@ -107,4 +107,4 @@ class ExtractCLIP(BaseFrameWiseExtractor):
             # probs = logits_per_image.softmax(dim=-1).cpu().numpy()  # T, N
 
             show_predictions_on_dataset(logits, self.pred_texts, self.count)
-            self.count =+5
+            self.count += 5
