@@ -39,6 +39,7 @@ class ExtractCLIP(BaseFrameWiseExtractor):
             # .long() is required because torch.nn.Embedding allows only Longs for pytorch 1.7.1
             self.pred_texts_tok = clip.tokenize(self.pred_texts).long()
         self.name2module = self.load_model()
+        self.count = 0 # для нумерования кадров
 
     def load_model(self) -> Dict[str, torch.nn.Module]:
         """Defines the models, loads checkpoints, sends them to the device.
@@ -105,4 +106,5 @@ class ExtractCLIP(BaseFrameWiseExtractor):
 
             # probs = logits_per_image.softmax(dim=-1).cpu().numpy()  # T, N
 
-            show_predictions_on_dataset(logits, self.pred_texts)
+            show_predictions_on_dataset(logits, self.pred_texts, self.count)
+            self.count =+5
