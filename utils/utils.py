@@ -47,7 +47,7 @@ def show_predictions_on_dataset(logits: torch.FloatTensor, dataset: Union[str, L
         print('  Logits | Prob. | Label ')
         for (logit, smax, cls) in zip(logits_score[b], softmax_score[b], class_labels[b]):
             # rows
-            print(count_frame, f'{logit:8.3f} | {smax:.3f} | {cls}')
+            print(int(count_frame/25), f'{logit:8.3f} | {smax:.3f} | {cls}')
         print()
 
 def make_path(output_root, video_path, output_key, ext):
